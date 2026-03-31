@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- SEO -->
+  <meta name="description" content="Learn machine learning through interactive visualizations. Watch algorithms train in real-time, understand gradient descent, and explore data.">
+  <meta name="keywords" content="machine learning, ML, visualization, interactive, learn ML, neural networks, decision trees, gradient descent">
+  <meta name="author" content="DECONSTRUCTING AI SYSTEMS">
+  <meta name="robots" content="index, follow">
+
+  <!-- Open Graph / Social Sharing -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="DECONSTRUCTING AI SYSTEMS">
+  <meta property="og:description" content="High-fidelity ML platform. Master the architecture of modern AI.">
+  <meta property="og:url" content="https://github.com/Vairamuthu18/ALGO-ARCHITECT">
+  <meta property="og:site_name" content="DECONSTRUCTING AI SYSTEMS">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="DECONSTRUCTING AI SYSTEMS">
+  <meta name="twitter:description" content="High-fidelity ML visualization. Deconstruct logic, architect the future.">
+
+  <!-- Content Security Policy -->
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self';">
+
+  <title>DECONSTRUCTING AI SYSTEMS</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><path d='M50 5L90 27.5V72.5L50 95L10 72.5V27.5L50 5Z' stroke='%2334d399' stroke-width='6' fill='none'/><path d='M30 70V40L50 60L70 40V70' stroke='white' stroke-width='8' stroke-linecap='round' stroke-linejoin='round'/></svg>">
+
+  <style>
+    /* Page loading spinner */
+    #page-loader {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 200px;
+    }
+    .spinner {
+      width: 36px; height: 36px;
+      border: 3px solid rgba(255,255,255,0.1);
+      border-top-color: var(--accent-blue, #6366f1);
+      border-radius: 50%;
+      animation: spin 0.7s linear infinite;
+    }
+    @keyframes spin { to { transform: rotate(360deg); } }
+  </style>
+</head>
+<body>
+  <div id="app">
+    <!-- Sidebar -->
+    <aside class="sidebar" role="navigation" aria-label="Main navigation">
+      <div class="sidebar-brand" aria-label="ML Viz Lab home">
+        <a href="/" style="display:flex;align-items:center;gap:12px;text-decoration:none;color:inherit;width:100%;">
+          <div class="sidebar-brand-icon" aria-hidden="true" style="background: var(--bg-muted); border: 1px solid var(--border-subtle); box-shadow: none;">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <!-- Sharp Hexagonal frame -->
+              <path d="M12 3L19.8 7.5V16.5L12 21L4.2 16.5V7.5L12 3Z" 
+                    stroke="var(--accent-gold)" stroke-width="1.5" stroke-linejoin="round"/>
+              <!-- Clean 'M' Structure -->
+              <path d="M7.5 16V9L12 13.5L16.5 9V16" 
+                    stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+            </svg>
+          </div>
+          <div>
+            <h1 style="margin:0;font-size:14px; letter-spacing:0.05em; font-weight:800; text-transform:uppercase; color:var(--accent-gold);">Deconstructing</h1>
+            <h1 style="margin:0;font-size:14px; letter-spacing:0.05em; font-weight:800; text-transform:uppercase; color:white;">AI Systems</h1>
+          </div>
+        </a>
+      </div>
+
+      <div class="sidebar-section">
+        <div class="sidebar-section-title mono-label" style="margin-bottom:12px; font-size:0.6rem; letter-spacing:0.12em; opacity:0.5;">01_SYSTEM_OVERVIEW</div>
+        <ul class="sidebar-nav" role="list">
+          <li><a href="#" data-page="dashboard" class="active" aria-current="page">
+            <span class="nav-icon" aria-hidden="true" style="color:var(--accent-gold);">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect width="7" height="9" x="3" y="3" rx="1"/><rect width="7" height="5" x="14" y="3" rx="1"/><rect width="7" height="9" x="14" y="12" rx="1"/><rect width="7" height="5" x="3" y="16" rx="1"/></svg>
+            </span>
+            Dashboard
+            <span class="badge mono-label" style="margin-left:auto; opacity:0.4;">[ 00 ]</span>
+          </a></li>
+        </ul>
+      </div>
+
+      <div class="sidebar-section">
+        <div class="sidebar-section-title mono-label" style="margin-bottom:12px; font-size:0.6rem; letter-spacing:0.12em; opacity:0.5;">02_CORE_CURRICULUM</div>
+        <ul class="sidebar-nav" role="list">
+          <li><a href="#" data-page="foundations" aria-label="Lesson 1: Foundations">
+            <span class="nav-icon" aria-hidden="true">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.84.7-2.13-.09-2.91a2.18 2.18 0 0 0-2.91-.09z"/><path d="m12 15-3-3a22 22 0 0 1 2-3.95A12.88 12.88 0 0 1 22 2c0 2.72-.78 7.5-6 11a22.35 22.35 0 0 1-4 2z"/><path d="M9 12H4s.55-3.03 2-5c1.62-2.2 5-3 5-3"/><path d="M12 15v5s3.03-.55 5-2c2.2-1.62 3-5 3-5"/></svg>
+            </span>
+            Foundations <span class="badge mono-label">[ L1 ]</span>
+          </a></li>
+          <li><a href="#" data-page="data-basics" aria-label="Lesson 2: Data Basics">
+            <span class="nav-icon" aria-hidden="true">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M3 5V19A9 3 0 0 0 21 19V5"/><path d="M3 12A9 3 0 0 0 21 12"/></svg>
+            </span>
+            Data Basics <span class="badge mono-label">[ L2 ]</span>
+          </a></li>
+          <li><a href="#" data-page="data-preprocessing" aria-label="Lesson 3: Data Preprocessing">
+            <span class="nav-icon" aria-hidden="true">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 6h18"/><path d="M7 12h10"/><path d="M10 18h4"/></svg>
+            </span>
+            Preprocessing <span class="badge mono-label">[ L3 ]</span>
+          </a></li>
+          <li><a href="#" data-page="model-evaluation" aria-label="Lesson 4: Model Evaluation">
+            <span class="nav-icon" aria-hidden="true">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="m16 16 3-8 3 8c-.87.65-1.92 1-3 1s-2.13-.35-3-1Z"/><path d="m2 16 3-8 3 8c-.87.65-1.92 1-3 1s-2.13-.35-3-1Z"/><path d="M7 21h10"/><path d="M12 3v18"/><path d="M3 7h2c2 0 5-1 7-2 2 1 5 2 7 2h2"/></svg>
+            </span>
+            Evaluation <span class="badge mono-label">[ L4 ]</span>
+          </a></li>
+          <li><a href="#" data-page="basic-math" aria-label="Lesson 5: Basic Mathematics">
+            <span class="nav-icon" aria-hidden="true">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="18" x="3" y="3" rx="2"/><path d="M8 12h8"/><path d="M12 8v8"/></svg>
+            </span>
+            Mathematics <span class="badge mono-label">[ L5 ]</span>
+          </a></li>
+          <li><a href="#" data-page="ml-workflow" aria-label="Lesson 6: ML Workflow">
+            <span class="nav-icon" aria-hidden="true">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12.22 2h-.44a2 2 0 0 0-2 2v.18a2 2 0 0 1-1 1.73l-.43.25a2 2 0 0 1-2 0l-.15-.08a2 2 0 0 0-2.73.73l-.22.38a2 2 0 0 0 .73 2.73l.15.1a2 2 0 0 1 1 1.72v.51a2 2 0 0 1-1 1.74l-.15.09a2 2 0 0 0-.73 2.73l.22.38a2 2 0 0 0 2.73.73l.15-.08a2 2 0 0 1 2 0l.43.25a2 2 0 0 1 1 1.73V20a2 2 0 0 0 2 2h.44a2 2 0 0 0 2-2v-.18a2 2 0 0 1 1-1.73l.43-.25a2 2 0 0 1 2 0l.15.08a2 2 0 0 0 2.73-.73l.22-.39a2 2 0 0 0-.73-2.73l-.15-.08a2 2 0 0 1-1-1.74v-.5a2 2 0 0 1 1-1.74l.15-.09a2 2 0 0 0 .73-2.73l-.22-.38a2 2 0 0 0-2.73-.73l-.15.08a2 2 0 0 1-2 0l-.43-.25a2 2 0 0 1-1-1.73V4a2 2 0 0 0-2-2z"/><circle cx="12" cy="12" r="3"/></svg>
+            </span>
+            Workflow <span class="badge mono-label">[ L6 ]</span>
+          </a></li>
+          <li><a href="#" data-page="loss-function" aria-label="Lesson 7: Loss Functions">
+            <span class="nav-icon" aria-hidden="true">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
+            </span>
+            Loss Functions <span class="badge mono-label">[ L7 ]</span>
+          </a></li>
+          <li><a href="#" data-page="gradient-descent" aria-label="Lesson 8: Gradient Descent">
+            <span class="nav-icon" aria-hidden="true">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20v-6"/><path d="m16 10-4 4-4-4"/><path d="M12 14V4"/></svg>
+            </span>
+            Gradient Descent <span class="badge mono-label">[ L8 ]</span>
+          </a></li>
+          <li><a href="#" data-page="linear-regression" aria-label="Lesson 9: Linear Regression">
+            <span class="nav-icon" aria-hidden="true">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="m11 15 2 2 4-4"/><rect width="18" height="18" x="3" y="3" rx="2"/></svg>
+            </span>
+            Linear Reg <span class="badge mono-label">[ L9 ]</span>
+          </a></li>
+          <li><a href="#" data-page="logistic-regression" aria-label="Lesson 10: Logistic Regression">
+            <span class="nav-icon" aria-hidden="true">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="m18 8-6 6-6-6"/><path d="M12 14V2"/></svg>
+            </span>
+            Logistic Reg <span class="badge mono-label">[ L10 ]</span>
+          </a></li>
+          <li><a href="#" data-page="knn" aria-label="Lesson 11: K-Nearest Neighbors">
+            <span class="nav-icon" aria-hidden="true">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+            </span>
+            K-Nearest <span class="badge mono-label">[ L11 ]</span>
+          </a></li>
+          <li><a href="#" data-page="model-metrics" aria-label="Lesson 12: Model Metrics">
+            <span class="nav-icon" aria-hidden="true">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></svg>
+            </span>
+            Metrics <span class="badge mono-label">[ L12 ]</span>
+          </a></li>
+          <li><a href="#" data-page="k-means" aria-label="Lesson 13: K-Means Clustering">
+            <span class="nav-icon" aria-hidden="true">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><circle cx="19" cy="5" r="3"/><circle cx="5" cy="19" r="3"/><path d="M17.17 6.83 6.83 17.17"/><path d="m12 15 7-10"/><path d="m12 9-7 10"/></svg>
+            </span>
+            Clustering <span class="badge mono-label">[ L13 ]</span>
+          </a></li>
+          <li><a href="#" data-page="decision-tree" aria-label="Lesson 14: Decision Trees">
+            <span class="nav-icon" aria-hidden="true">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v8"/><path d="m16 10-4 4-4-4"/><path d="m12 14-4 4"/><path d="m12 14 4 4"/></svg>
+            </span>
+            Decision Trees <span class="badge mono-label">[ L14 ]</span>
+          </a></li>
+          <li><a href="#" data-page="neural-network" aria-label="Lesson 15: Neural Networks">
+            <span class="nav-icon" aria-hidden="true">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a10 10 0 1 0 10 10A10 10 0 0 0 12 2zm0 18a8 8 0 1 1 8-8 8 8 0 0 1-8 8z"/><path d="M12 6v6l4 2"/></svg>
+            </span>
+            Neural Nets <span class="badge mono-label">[ L15 ]</span>
+          </a></li>
+          <li><a href="#" data-page="svm" aria-label="Lesson 16: Support Vector Machines">
+            <span class="nav-icon" aria-hidden="true">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="8" x="2" y="2" rx="2"/><rect width="20" height="8" x="2" y="14" rx="2"/><path d="M6 10v4"/><path d="M18 10v4"/></svg>
+            </span>
+            SVM <span class="badge mono-label">[ L16 ]</span>
+          </a></li>
+        </ul>
+      </div>
+
+      <div class="sidebar-section">
+        <div class="sidebar-section-title mono-label" style="margin-bottom:12px; font-size:0.6rem; letter-spacing:0.12em; opacity:0.5;">03_LAB_TOOLS</div>
+        <ul class="sidebar-nav" role="list">
+          <li><a href="#" data-page="data-playground" aria-label="Data Playground">
+            <span class="nav-icon" aria-hidden="true">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M6 18h8"/><path d="M3 22h18"/><path d="M14 22a7 7 0 1 0 0-14h-1"/><path d="M9 14h2"/></svg>
+            </span>
+            Data Playground
+          </a></li>
+          <li><a href="#" data-page="explainers" aria-label="Why Did This Happen? Explainers">
+            <span class="nav-icon" aria-hidden="true">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M15 14c.2-1 .7-1.7 1.5-2.5 1-.9 1.5-2.2 1.5-3.5A6 6 0 0 0 6 8c0 1 .2 2.2 1.5 3.5.7.7 1.3 1.5 1.5 2.5"/><path d="M9 18h6"/><path d="M10 22h4"/></svg>
+            </span>
+            Explainers
+          </a></li>
+        </ul>
+      </div>
+
+      <div class="sidebar-section">
+        <div class="sidebar-section-title mono-label" style="margin-bottom:12px; font-size:0.6rem; letter-spacing:0.12em; opacity:0.5;">04_IDENTITY</div>
+        <ul class="sidebar-nav" role="list">
+          <li><a href="#" data-page="pricing" aria-label="Pricing plans">
+            <span class="nav-icon" aria-hidden="true">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M6 3h12l4 6-10 12L2 9z"/><path d="M11 3 8 9l3 12"/><path d="m13 3 3 6-3 12"/><path d="M2 9h20"/></svg>
+            </span>
+            Pricing <span class="badge pro mono-label">PRO</span>
+          </a></li>
+          <li><a href="#" data-page="login" aria-label="Login or sign up">
+            <span class="nav-icon" aria-hidden="true">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+            </span>
+            Account Access
+          </a></li>
+        </ul>
+      </div>
+
+      <!-- Bottom user capsule -->
+      <div class="sidebar-user" id="sidebar-user-capsule" aria-label="User account info">
+        <div class="sidebar-user-avatar" id="user-avatar-initials" style="background:var(--accent-gold); color:#071017; font-weight:800;">DA</div>
+        <div class="sidebar-user-info">
+          <div class="sidebar-user-name" id="sidebar-user-name">Guest Learner</div>
+          <div class="sidebar-user-role" id="sidebar-user-role">Free Plan · <span style="color:var(--accent-gold)">Active</span></div>
+        </div>
+      </div>
+    </aside>
+
+    <!-- Main -->
+    <div class="main-content" role="main">
+      <!-- Topbar -->
+      <header class="topbar" role="banner" style="background: var(--bg-secondary); backdrop-filter: none; -webkit-backdrop-filter: none; border-bottom: 1px solid var(--border-subtle);">
+        <div class="topbar-left">
+          <button class="topbar-btn" id="menu-toggle" aria-label="Toggle sidebar menu" aria-expanded="false">☰</button>
+          <nav class="topbar-breadcrumb mono-label" id="breadcrumb" aria-label="Breadcrumb" style="font-size:0.75rem; letter-spacing:0.05em; opacity:0.8;">
+            Home <span style="color:var(--text-muted);margin:0 8px; opacity:0.4;" aria-hidden="true">/</span> <span style="color:var(--accent-gold); font-weight:700;">Dashboard</span>
+          </nav>
+        </div>
+        <div class="topbar-right">
+          <div class="topbar-search" role="search">
+            <span class="topbar-search-icon" aria-hidden="true">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
+            </span>
+            <input type="search" placeholder="SYSTEM_SEARCH..." id="topbar-search-input" aria-label="Search modules">
+          </div>
+          <div class="topbar-divider" aria-hidden="true"></div>
+          
+          <!-- Notifications -->
+          <div class="topbar-dropdown" id="notif-dropdown-trigger">
+            <button class="topbar-btn" id="notif-btn" title="Notifications" aria-label="Notifications">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"></path>
+                <path d="M13.73 21a2 2 0 0 1-3.46 0"></path>
+              </svg>
+              <span class="notif-dot" id="notif-dot-spark"></span>
+            </button>
+            <div class="dropdown-menu" id="notif-menu">
+              <div class="dropdown-header">
+                <span>Notifications</span>
+                <button class="dropdown-action-btn" id="clear-notifs">Mark all as read</button>
+              </div>
+              <div class="dropdown-content" id="notif-list">
+                <div class="dropdown-item empty-state">No new notifications</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Settings -->
+          <div class="topbar-dropdown" id="settings-dropdown-trigger">
+            <button class="topbar-btn" id="settings-btn" title="Settings" aria-label="Settings">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="3" y="3" width="18" height="18" rx="4" ry="4"></rect>
+                <path d="M9 9h6v6H9z"></path>
+              </svg>
+            </button>
+            <div class="dropdown-menu" id="settings-menu">
+              <div class="dropdown-header">Platform Settings</div>
+              <div class="dropdown-content">
+                <div class="dropdown-item-flex">
+                  <span>Dark Mode</span>
+                  <label class="switch"><input type="checkbox" id="theme-toggle" checked><span class="slider"></span></label>
+                </div>
+                <div class="dropdown-item-flex">
+                  <span>Sound Effects</span>
+                  <label class="switch"><input type="checkbox" id="sound-toggle" checked><span class="slider"></span></label>
+                </div>
+                <div class="dropdown-item-flex">
+                  <span>Auto-Play Visuals</span>
+                  <label class="switch"><input type="checkbox" id="autoplay-toggle" checked><span class="slider"></span></label>
+                </div>
+                <div class="dropdown-divider"></div>
+                <!-- Accessibility Section -->
+                <div class="dropdown-item-vertical">
+                  <span class="dropdown-label-sm">Text Scaling</span>
+                  <div class="pill-group">
+                    <button class="pill-btn" onclick="setTextScale('normal')">Small</button>
+                    <button class="pill-btn" onclick="setTextScale('large')">Medium</button>
+                    <button class="pill-btn" onclick="setTextScale('extra')">Large</button>
+                  </div>
+                </div>
+                <!-- Language Section -->
+                <div class="dropdown-item-vertical border-top">
+                  <span class="dropdown-label-sm">Interface Language</span>
+                  <select class="dropdown-select" onchange="setLanguage(this.value)">
+                    <option value="en">English (US)</option>
+                    <option value="es">Español</option>
+                    <option value="hi">हिन्दी</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Profile -->
+          <div class="topbar-dropdown" id="profile-dropdown-trigger">
+            <div class="user-avatar yellow-avatar" id="topbar-user-avatar" title="Profile" aria-label="User profile" role="button" tabindex="0">DA</div>
+            <div class="dropdown-menu" id="profile-menu">
+              <div class="dropdown-user-header">
+                <div class="user-avatar yellow-avatar sm">DA</div>
+                <div class="user-details">
+                  <div class="user-name" id="dropdown-user-name">Guest Learner</div>
+                  <div class="user-plan">Free Plan</div>
+                </div>
+              </div>
+              <div class="dropdown-divider"></div>
+              <div class="dropdown-content">
+                <a href="#" class="dropdown-item"><span class="dropdown-icon">👤</span> My Profile</a>
+                <a href="#" class="dropdown-item"><span class="dropdown-icon">💎</span> Upgrade to PRO</a>
+                <a href="#" class="dropdown-item"><span class="dropdown-icon">⚙️</span> Account Settings</a>
+                <div class="dropdown-divider"></div>
+                <a href="#" class="dropdown-item logout-btn" id="logout-btn"><span class="dropdown-icon">🚪</span> Sign Out</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </header>
+
+      <!-- Page Content -->
+      <div id="page-content" class="page-content" aria-live="polite" aria-label="Page content"></div>
+    </div>
+  </div>
+
+  <script type="module">
+    import { navigate } from './js/app.js';
+    window.__app = { navigate };
+  </script>
+</body>
+</html>

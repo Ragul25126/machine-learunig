@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- SEO -->
+  <meta name="description" content="Learn machine learning through interactive visualizations. Watch algorithms train in real-time, understand gradient descent, and explore data.">
+  <meta name="keywords" content="machine learning, ML, visualization, interactive, learn ML, neural networks, decision trees, gradient descent">
+  <meta name="author" content="ML Viz Lab">
+  <meta name="robots" content="index, follow">
+
+  <!-- Open Graph / Social Sharing -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="ML Viz Lab — Learn ML Through Visualization">
+  <meta property="og:description" content="Interactive ML learning platform. Watch algorithms train in real-time.">
+  <meta property="og:url" content="https://github.com/Vairamuthu18/ML-SAAS">
+  <meta property="og:site_name" content="ML Viz Lab">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="ML Viz Lab — Learn ML Through Visualization">
+  <meta name="twitter:description" content="Interactive ML learning platform. Watch algorithms train in real-time.">
+
+  <!-- Content Security Policy -->
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self';">
+
+  <title>ML Viz Lab — Learn ML Through Visualization</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><path d='M50 5L90 27.5V72.5L50 95L10 72.5V27.5L50 5Z' stroke='%2334d399' stroke-width='6' fill='none'/><path d='M30 70V40L50 60L70 40V70' stroke='white' stroke-width='8' stroke-linecap='round' stroke-linejoin='round'/></svg>">
+
+  <style>
+    /* Page loading spinner */
+    #page-loader {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 200px;
+    }
+    .spinner {
+      width: 36px; height: 36px;
+      border: 3px solid rgba(255,255,255,0.1);
+      border-top-color: var(--accent-blue, #6366f1);
+      border-radius: 50%;
+      animation: spin 0.7s linear infinite;
+    }
+    @keyframes spin { to { transform: rotate(360deg); } }
+  </style>
+</head>
+<body>
+  <div id="app">
+    <!-- Sidebar -->
+    <aside class="sidebar" role="navigation" aria-label="Main navigation">
+      <div class="sidebar-brand" aria-label="ML Viz Lab home">
+        <a href="/" style="display:flex;align-items:center;gap:12px;text-decoration:none;color:inherit;width:100%;">
+          <div class="sidebar-brand-icon" aria-hidden="true" style="background: none; box-shadow: none;">
+            <svg width="40" height="40" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <defs>
+                <linearGradient id="logo-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+                  <stop offset="0%" stop-color="#34d399" />
+                  <stop offset="100%" stop-color="#10b981" />
+                </linearGradient>
+                <filter id="logo-glow" x="-30%" y="-30%" width="160%" height="160%">
+                  <feGaussianBlur stdDeviation="1.2" result="blur" />
+                  <feComposite in="SourceGraphic" in2="blur" operator="over" />
+                </filter>
+              </defs>
+              <!-- Hexagonal frame -->
+              <path d="M12 3L19.8 7.5V16.5L12 21L4.2 16.5V7.5L12 3Z" 
+                    stroke="url(#logo-grad)" stroke-width="1.2" stroke-linejoin="round" opacity="0.8"/>
+              <!-- Neural 'M' Structure -->
+              <path d="M7.5 16V9L12 13.5L16.5 9V16" 
+                    stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" 
+                    filter="url(#logo-glow)" />
+              <!-- Data Nodes -->
+              <circle cx="12" cy="13.5" r="1.2" fill="white" filter="url(#logo-glow)" />
+              <circle cx="7.5" cy="9" r="0.8" fill="#34d399" />
+              <circle cx="16.5" cy="9" r="0.8" fill="#34d399" />
+              <!-- Glass sheen -->
+              <path d="M6 8L12 5L18 8" stroke="white" stroke-width="0.5" opacity="0.2" />
+            </svg>
+          </div>
+          <div>
+            <h1 style="margin:0;font-size:20px;">ML Viz Lab</h1>
+            <span style="font-size:12px;opacity:0.7;">Visual Learning Platform</span>
+          </div>
+        </a>
+      </div>
+
+      <div class="sidebar-section">
+        <div class="sidebar-section-title">Overview</div>
+        <ul class="sidebar-nav" role="list">
+          <li><a href="#" data-page="dashboard" class="active" aria-current="page"><span class="nav-icon" aria-hidden="true">🏠</span> Dashboard</a></li>
+        </ul>
+      </div>
+
+      <div class="sidebar-section">
+        <div class="sidebar-section-title">Course Modules</div>
+        <ul class="sidebar-nav" role="list">
+          <li><a href="#" data-page="foundations" aria-label="Lesson 1: Foundations"><span class="nav-icon" aria-hidden="true">🚀</span> Foundations <span class="badge">L1</span></a></li>
+          <li><a href="#" data-page="data-basics" aria-label="Lesson 2: Data Basics"><span class="nav-icon" aria-hidden="true">🧱</span> Data Basics <span class="badge">L2</span></a></li>
+          <li><a href="#" data-page="data-preprocessing" aria-label="Lesson 3: Data Preprocessing"><span class="nav-icon" aria-hidden="true">🧼</span> Data Preprocessing <span class="badge">L3</span></a></li>
+          <li><a href="#" data-page="model-evaluation" aria-label="Lesson 4: Model Evaluation"><span class="nav-icon" aria-hidden="true">⚖️</span> Model Evaluation <span class="badge">L4</span></a></li>
+          <li><a href="#" data-page="basic-math" aria-label="Lesson 5: Basic Mathematics"><span class="nav-icon" aria-hidden="true">🧮</span> Basic Mathematics <span class="badge">L5</span></a></li>
+          <li><a href="#" data-page="ml-workflow" aria-label="Lesson 6: ML Workflow"><span class="nav-icon" aria-hidden="true">⚙️</span> ML Workflow <span class="badge">L6</span></a></li>
+          <li><a href="#" data-page="loss-function" aria-label="Lesson 7: Loss Functions"><span class="nav-icon" aria-hidden="true">📉</span> Loss Functions <span class="badge">L7</span></a></li>
+          <li><a href="#" data-page="gradient-descent" aria-label="Lesson 8: Gradient Descent"><span class="nav-icon" aria-hidden="true">🏂</span> Gradient Descent <span class="badge">L8</span></a></li>
+          <li><a href="#" data-page="linear-regression" aria-label="Lesson 9: Linear Regression"><span class="nav-icon" aria-hidden="true">📏</span> Linear Regression <span class="badge">L9</span></a></li>
+          <li><a href="#" data-page="logistic-regression" aria-label="Lesson 10: Logistic Regression"><span class="nav-icon" aria-hidden="true">🔀</span> Logistic Regression <span class="badge">L10</span></a></li>
+          <li><a href="#" data-page="knn" aria-label="Lesson 11: K-Nearest Neighbors"><span class="nav-icon" aria-hidden="true">🏘️</span> K-Nearest Neighbors <span class="badge">L11</span></a></li>
+          <li><a href="#" data-page="model-metrics" aria-label="Lesson 12: Model Metrics"><span class="nav-icon" aria-hidden="true">🎯</span> Model Metrics <span class="badge">L12</span></a></li>
+          <li><a href="#" data-page="k-means" aria-label="Lesson 13: K-Means Clustering"><span class="nav-icon" aria-hidden="true">🪐</span> K-Means Clustering <span class="badge">L13</span></a></li>
+          <li><a href="#" data-page="decision-tree" aria-label="Lesson 14: Decision Trees"><span class="nav-icon" aria-hidden="true">🌳</span> Decision Trees <span class="badge">L14</span></a></li>
+          <li><a href="#" data-page="neural-network" aria-label="Lesson 15: Neural Networks"><span class="nav-icon" aria-hidden="true">🧠</span> Neural Networks <span class="badge">L15</span></a></li>
+          <li><a href="#" data-page="svm" aria-label="Lesson 16: Support Vector Machines"><span class="nav-icon" aria-hidden="true">🛣️</span> SVM <span class="badge">L16</span></a></li>
+        </ul>
+      </div>
+
+      <div class="sidebar-section">
+        <div class="sidebar-section-title">Tools</div>
+        <ul class="sidebar-nav" role="list">
+          <li><a href="#" data-page="data-playground" aria-label="Data Playground"><span class="nav-icon" aria-hidden="true">🔬</span> Data Playground</a></li>
+          <li><a href="#" data-page="explainers" aria-label="Why Did This Happen? Explainers"><span class="nav-icon" aria-hidden="true">💡</span> Why Did This Happen?</a></li>
+        </ul>
+      </div>
+
+      <div class="sidebar-section">
+        <div class="sidebar-section-title">Account</div>
+        <ul class="sidebar-nav" role="list">
+          <li><a href="#" data-page="pricing" aria-label="Pricing plans"><span class="nav-icon" aria-hidden="true">💎</span> Pricing <span class="badge pro">PRO</span></a></li>
+          <li><a href="#" data-page="login" aria-label="Login or sign up"><span class="nav-icon" aria-hidden="true">👤</span> Login / Signup</a></li>
+        </ul>
+      </div>
+
+      <!-- Bottom user capsule -->
+      <div class="sidebar-user" id="sidebar-user-capsule" aria-label="User account info">
+        <div class="sidebar-user-avatar" id="user-avatar-initials">ML</div>
+        <div class="sidebar-user-info">
+          <div class="sidebar-user-name" id="sidebar-user-name">Guest Learner</div>
+          <div class="sidebar-user-role" id="sidebar-user-role">Free Plan · <span style="color:var(--accent-emerald)">Active</span></div>
+        </div>
+      </div>
+    </aside>
+
+    <!-- Main -->
+    <div class="main-content" role="main">
+      <!-- Topbar -->
+      <header class="topbar" role="banner">
+        <div class="topbar-left">
+          <button class="topbar-btn" id="menu-toggle" aria-label="Toggle sidebar menu" aria-expanded="false">☰</button>
+          <nav class="topbar-breadcrumb" id="breadcrumb" aria-label="Breadcrumb">
+            Home <span style="color:var(--text-muted);margin:0 5px" aria-hidden="true">›</span> <strong>Dashboard</strong>
+          </nav>
+        </div>
+        <div class="topbar-right">
+          <div class="topbar-search" role="search">
+            <span class="topbar-search-icon" aria-hidden="true">🔍</span>
+            <input type="search" placeholder="Search modules..." id="topbar-search-input" aria-label="Search modules">
+          </div>
+          <div class="topbar-divider" aria-hidden="true"></div>
+          <!-- Notifications -->
+          <div class="topbar-dropdown" id="notif-dropdown-trigger">
+            <button class="topbar-btn" id="notif-btn" title="Notifications" aria-label="Notifications">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"></path>
+                <path d="M13.73 21a2 2 0 0 1-3.46 0"></path>
+              </svg>
+              <span class="notif-dot" id="notif-dot-spark"></span>
+            </button>
+            <div class="dropdown-menu" id="notif-menu">
+              <div class="dropdown-header">
+                <span>Notifications</span>
+                <button class="dropdown-action-btn" id="clear-notifs">Mark all as read</button>
+              </div>
+              <div class="dropdown-content" id="notif-list">
+                <!-- Notifications will be injected here -->
+                <div class="dropdown-item empty-state">No new notifications</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Settings -->
+          <div class="topbar-dropdown" id="settings-dropdown-trigger">
+            <button class="topbar-btn" id="settings-btn" title="Settings" aria-label="Settings">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="3" y="3" width="18" height="18" rx="4" ry="4"></rect>
+                <path d="M9 9h6v6H9z"></path>
+              </svg>
+            </button>
+            <div class="dropdown-menu" id="settings-menu">
+              <div class="dropdown-header">Platform Settings</div>
+              <div class="dropdown-content">
+                <div class="dropdown-item-flex">
+                  <span>Dark Mode</span>
+                  <label class="switch"><input type="checkbox" id="theme-toggle" checked><span class="slider"></span></label>
+                </div>
+                <div class="dropdown-item-flex">
+                  <span>Sound Effects</span>
+                  <label class="switch"><input type="checkbox" id="sound-toggle" checked><span class="slider"></span></label>
+                </div>
+                <div class="dropdown-item-flex">
+                  <span>Auto-Play Visuals</span>
+                  <label class="switch"><input type="checkbox" id="autoplay-toggle" checked><span class="slider"></span></label>
+                </div>
+                <div class="dropdown-divider"></div>
+                <!-- Accessibility Section -->
+                <div class="dropdown-item-vertical">
+                  <span class="dropdown-label-sm">Text Scaling</span>
+                  <div class="pill-group">
+                    <button class="pill-btn" onclick="setTextScale('normal')">Small</button>
+                    <button class="pill-btn" onclick="setTextScale('large')">Medium</button>
+                    <button class="pill-btn" onclick="setTextScale('extra')">Large</button>
+                  </div>
+                </div>
+                <!-- Language Section -->
+                <div class="dropdown-item-vertical border-top">
+                  <span class="dropdown-label-sm">Interface Language</span>
+                  <select class="dropdown-select" onchange="setLanguage(this.value)">
+                    <option value="en">English (US)</option>
+                    <option value="es">Español</option>
+                    <option value="hi">हिन्दी</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Profile -->
+          <div class="topbar-dropdown" id="profile-dropdown-trigger">
+            <div class="user-avatar yellow-avatar" id="topbar-user-avatar" title="Profile" aria-label="User profile" role="button" tabindex="0">DA</div>
+            <div class="dropdown-menu" id="profile-menu">
+              <div class="dropdown-user-header">
+                <div class="user-avatar yellow-avatar sm">DA</div>
+                <div class="user-details">
+                  <div class="user-name" id="dropdown-user-name">Guest Learner</div>
+                  <div class="user-plan">Free Plan</div>
+                </div>
+              </div>
+              <div class="dropdown-divider"></div>
+              <div class="dropdown-content">
+                <a href="#" class="dropdown-item"><span class="dropdown-icon">👤</span> My Profile</a>
+                <a href="#" class="dropdown-item"><span class="dropdown-icon">💎</span> Upgrade to PRO</a>
+                <a href="#" class="dropdown-item"><span class="dropdown-icon">⚙️</span> Account Settings</a>
+                <div class="dropdown-divider"></div>
+                <a href="#" class="dropdown-item logout-btn" id="logout-btn"><span class="dropdown-icon">🚪</span> Sign Out</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </header>
+
+      <!-- Page Content -->
+      <div id="page-content" class="page-content" aria-live="polite" aria-label="Page content"></div>
+    </div>
+  </div>
+
+  <script type="module">
+    import { navigate } from './js/app.js';
+    window.__app = { navigate };
+  </script>
+</body>
+</html>
