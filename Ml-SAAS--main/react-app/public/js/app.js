@@ -239,6 +239,10 @@ function renderNotifications() {
   const dot = document.getElementById('notif-dot-spark');
   if (!list) return;
 
+  const mockNotifications = window.mockNotifications || [
+    { id: 1, title: "Welcome to ML Viz Lab", desc: "Explore the new dashboard.", time: "Just now", unread: true }
+  ];
+
   if (mockNotifications.length === 0) {
     list.innerHTML = '<div class="empty-state">No new notifications</div>';
     if (dot) dot.style.display = 'none';
