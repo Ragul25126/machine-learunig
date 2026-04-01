@@ -210,7 +210,7 @@ function initDropdowns() {
   dropdownTriggers.forEach(({ trigger, menu }) => {
     const triggerEl = document.getElementById(trigger);
     const menuEl = document.getElementById(menu);
-    // Also check for the internal button since that's what's actually clicked
+    // CRITICAL: Always target the button for clicks, not the container
     const btnEl = triggerEl ? triggerEl.querySelector('.topbar-btn') : null;
 
     const toggle = (e) => {
@@ -224,11 +224,15 @@ function initDropdowns() {
       }
     };
 
-    if (triggerEl && menuEl) triggerEl.addEventListener('click', toggle);
-    if (btnEl && menuEl) btnEl.addEventListener('click', toggle);
+    // Attach only to the button or the trigger div if button is missing
+    if (btnEl) {
+      btnEl.addEventListener('click', toggle);
+    } else if (triggerEl) {
+      triggerEl.addEventListener('click', toggle);
+    }
   });
 
-  // Prevent closing when clicking inside menu
+  // Extra catch-all to prevent closing when clicking anywhere inside the menu
   document.querySelectorAll('.dropdown-menu').forEach(menu => {
     menu.addEventListener('click', (e) => e.stopPropagation());
   });
@@ -276,9 +280,7 @@ function initSettings() {
 
     el.addEventListener('change', () => {
       localStorage.setItem(prefKey, el.checked);
-      if (id === 'theme-toggle') {
-        document.documentElement.classList.toggle('dark', el.checked);
-      } else if (id === 'sound-toggle') {
+      if (id === 'sound-toggle') {
         sounds.setEnabled(el.checked);
       }
     });
@@ -287,7 +289,8 @@ function initSettings() {
   // accessibility scaling
   const body = document.body;
   window.setTextScale = (scale) => {
-    body.style.fontSize = scale === 'large' ? '18px' : scale === 'extra' ? '21px' : '15px';
+    const root = document.documentElement;
+    root.style.fontSize = scale === 'large' ? '18px' : scale === 'extra' ? '21px' : '15px';
     localStorage.setItem('mlviz_text_scale', scale);
   };
   const savedScale = localStorage.getItem('mlviz_text_scale');

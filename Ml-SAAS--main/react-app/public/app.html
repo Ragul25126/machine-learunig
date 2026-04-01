@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="dark">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -23,7 +23,7 @@
   <meta name="twitter:description" content="High-fidelity ML visualization. Deconstruct logic, architect the future.">
 
   <!-- Content Security Policy -->
-  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self';">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.plot.ly; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https:;">
 
   <title>DECONSTRUCTING AI SYSTEMS</title>
   <link rel="stylesheet" href="css/style.css">
@@ -60,18 +60,18 @@
                     stroke="var(--accent-gold)" stroke-width="1.5" stroke-linejoin="round"/>
               <!-- Clean 'M' Structure -->
               <path d="M7.5 16V9L12 13.5L16.5 9V16" 
-                    stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                    stroke="var(--text-primary)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
             </svg>
           </div>
           <div>
             <h1 style="margin:0;font-size:14px; letter-spacing:0.05em; font-weight:800; text-transform:uppercase; color:var(--accent-gold);">Deconstructing</h1>
-            <h1 style="margin:0;font-size:14px; letter-spacing:0.05em; font-weight:800; text-transform:uppercase; color:white;">AI Systems</h1>
+            <h1 style="margin:0;font-size:14px; letter-spacing:0.05em; font-weight:800; text-transform:uppercase; color:var(--text-primary);">AI Systems</h1>
           </div>
         </a>
       </div>
 
       <div class="sidebar-section">
-        <div class="sidebar-section-title mono-label" style="margin-bottom:12px; font-size:0.6rem; letter-spacing:0.12em; opacity:0.5;">01_SYSTEM_OVERVIEW</div>
+        <div class="sidebar-section-title mono-label" style="margin-bottom:12px; font-size:0.6rem; letter-spacing:0.12em; opacity:0.8;">01_SYSTEM_OVERVIEW</div>
         <ul class="sidebar-nav" role="list">
           <li><a href="#" data-page="dashboard" class="active" aria-current="page">
             <span class="nav-icon" aria-hidden="true" style="color:var(--accent-gold);">
@@ -84,7 +84,7 @@
       </div>
 
       <div class="sidebar-section">
-        <div class="sidebar-section-title mono-label" style="margin-bottom:12px; font-size:0.6rem; letter-spacing:0.12em; opacity:0.5;">02_CORE_CURRICULUM</div>
+        <div class="sidebar-section-title mono-label" style="margin-bottom:12px; font-size:0.6rem; letter-spacing:0.12em; opacity:0.8;">02_CORE_CURRICULUM</div>
         <ul class="sidebar-nav" role="list">
           <li><a href="#" data-page="foundations" aria-label="Lesson 1: Foundations">
             <span class="nav-icon" aria-hidden="true">
@@ -186,7 +186,7 @@
       </div>
 
       <div class="sidebar-section">
-        <div class="sidebar-section-title mono-label" style="margin-bottom:12px; font-size:0.6rem; letter-spacing:0.12em; opacity:0.5;">03_LAB_TOOLS</div>
+        <div class="sidebar-section-title mono-label" style="margin-bottom:12px; font-size:0.6rem; letter-spacing:0.12em; opacity:0.8;">03_LAB_TOOLS</div>
         <ul class="sidebar-nav" role="list">
           <li><a href="#" data-page="data-playground" aria-label="Data Playground">
             <span class="nav-icon" aria-hidden="true">
@@ -204,7 +204,7 @@
       </div>
 
       <div class="sidebar-section">
-        <div class="sidebar-section-title mono-label" style="margin-bottom:12px; font-size:0.6rem; letter-spacing:0.12em; opacity:0.5;">04_IDENTITY</div>
+        <div class="sidebar-section-title mono-label" style="margin-bottom:12px; font-size:0.6rem; letter-spacing:0.12em; opacity:0.8;">04_IDENTITY</div>
         <ul class="sidebar-nav" role="list">
           <li><a href="#" data-page="pricing" aria-label="Pricing plans">
             <span class="nav-icon" aria-hidden="true">
@@ -237,7 +237,7 @@
       <header class="topbar" role="banner" style="background: var(--bg-secondary); backdrop-filter: none; -webkit-backdrop-filter: none; border-bottom: 1px solid var(--border-subtle);">
         <div class="topbar-left">
           <button class="topbar-btn" id="menu-toggle" aria-label="Toggle sidebar menu" aria-expanded="false">☰</button>
-          <nav class="topbar-breadcrumb mono-label" id="breadcrumb" aria-label="Breadcrumb" style="font-size:0.75rem; letter-spacing:0.05em; opacity:0.8;">
+          <nav class="topbar-breadcrumb mono-label" id="breadcrumb" aria-label="Breadcrumb" style="font-size:0.75rem; letter-spacing:0.05em; opacity:1.0;">
             Home <span style="color:var(--text-muted);margin:0 8px; opacity:0.4;" aria-hidden="true">/</span> <span style="color:var(--accent-gold); font-weight:700;">Dashboard</span>
           </nav>
         </div>
@@ -281,9 +281,9 @@
             <div class="dropdown-menu" id="settings-menu">
               <div class="dropdown-header">Platform Settings</div>
               <div class="dropdown-content">
-                <div class="dropdown-item-flex">
-                  <span>Dark Mode</span>
-                  <label class="switch"><input type="checkbox" id="theme-toggle" checked><span class="slider"></span></label>
+                <div class="dropdown-item-flex" style="opacity: 0.5; cursor: not-allowed;" title="Dark Mode is required for best visualization experience">
+                  <span>System Appearance</span>
+                  <span style="font-size: 0.7rem; font-weight: 700; color: var(--accent-gold);">DARK_ONLY</span>
                 </div>
                 <div class="dropdown-item-flex">
                   <span>Sound Effects</span>
